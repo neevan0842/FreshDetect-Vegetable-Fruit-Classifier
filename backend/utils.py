@@ -1,6 +1,8 @@
-import tensorflow as tf
-import numpy as np
 import os
+import numpy as np
+
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+import tensorflow as tf
 
 IMG_SIZE = (224, 224)
 class_names = [
@@ -53,7 +55,9 @@ def allowed_file(filename):
 
 
 def load_model():
-    model_path = os.path.join(os.getcwd(), "backend", "model_creation", "model.keras")
+    model_path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), "model_creation", "model.keras"
+    )
     print(f"Model path: {model_path}")
     print("Loading model...")
     model = tf.keras.models.load_model(model_path)

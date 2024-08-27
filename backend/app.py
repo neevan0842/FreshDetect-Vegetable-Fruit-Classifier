@@ -1,11 +1,13 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 from werkzeug.utils import secure_filename
 import utils
 import os
 
 app = Flask(__name__)
+CORS(app)  # This will enable CORS for all routes
 
-UPLOAD_FOLDER = os.path.join(os.getcwd(), "backend", "uploads")
+UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "uploads")
 model = utils.load_model()
 
 
@@ -18,7 +20,7 @@ def home():
 @app.route("/class_names")
 def class_names():
     class_names = utils.get_class_names()
-    return jsonify(class_names), 200
+    return jsonify({"class_names": class_names}), 200
 
 
 @app.route("/predict", methods=["POST"])
