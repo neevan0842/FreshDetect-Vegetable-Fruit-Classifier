@@ -36,7 +36,9 @@ def upload_file():
     if file and utils.allowed_file(file.filename):
         filename = secure_filename(file.filename)
         file_path = os.path.join(UPLOAD_FOLDER, filename)
-        file.save(file_path)
+        utils.save_file(
+            upload_directory=UPLOAD_FOLDER, new_file=file, secured_filename=filename
+        )
 
         # Call the prediction function
         prediction = utils.predict_output(file_path, model)

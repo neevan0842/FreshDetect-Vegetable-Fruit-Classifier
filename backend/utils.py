@@ -1,5 +1,7 @@
 import os
 import numpy as np
+from pathlib import Path
+
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 import tensorflow as tf
@@ -52,6 +54,19 @@ def get_class_names():
 
 def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+def save_file(upload_directory, new_file, secured_filename):
+    MAX_FILES = 10
+    upload_directory = Path(upload_directory)
+    files = sorted(upload_directory.iterdir(), key=os.path.getmtime)
+    while len(files) >= MAX_FILES:
+        oldest_file = files.pop(0)
+        if oldest_file.is_file():
+            os.remove(oldest_file)
+
+    new_file_path = os.path.join(upload_directory, secured_filename)
+    new_file.save(new_file_path)
 
 
 def load_model():
