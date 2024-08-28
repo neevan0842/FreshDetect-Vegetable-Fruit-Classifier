@@ -25,18 +25,15 @@ const NavBar = () => {
           <Navbar.Brand as={Link} to={"/"}>
             <strong>FreshDetect</strong>
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link
-                as={Link}
-                to="/about"
-                className={location.pathname === "/about" ? "bold-link" : ""}
-              >
-                About
-              </Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
+          <Nav className="me-auto">
+            <Nav.Link
+              as={Link}
+              to="/about"
+              className={location.pathname === "/about" ? "bold-link" : ""}
+            >
+              About
+            </Nav.Link>
+          </Nav>
           {theme === "light" ? (
             <i className="fa-regular fa-sun" onClick={toggleTheme}></i>
           ) : (

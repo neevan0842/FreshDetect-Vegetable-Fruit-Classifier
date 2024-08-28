@@ -6,7 +6,7 @@ import api from "../api";
 const Home = () => {
   const [previewURL, setPreviewURL] = useState(null);
   const [prediction, setPrediction] = useState(null);
-  const [spin, setSpin] = useState(null);
+  const [spin, setSpin] = useState(false);
 
   const formData = new FormData();
 
@@ -27,11 +27,11 @@ const Home = () => {
         if (response.status === 200) {
           setPrediction(response.data.prediction);
         } else {
-          console.error("Failed to fetch prediction");
+          console.log("Failed to fetch prediction");
           setPreviewURL(null);
         }
       } catch (error) {
-        console.error(error);
+        console.log(error);
         setPreviewURL(null);
       }
       setSpin(false);
@@ -47,7 +47,7 @@ const Home = () => {
         onChange={handleImageChange}
       >
         <Form.Label>Input the image file to predict</Form.Label>
-        <Form.Control type="file" accept=".jpeg,.jpg,.png," />
+        <Form.Control type="file" accept=".jpeg,.jpg,.png" />
       </Form.Group>
       <div className="text-center my-4">
         {previewURL && (
