@@ -1,25 +1,45 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
-import api from "../api";
 
 const About = () => {
-  const [classNames, setClassNames] = useState(null);
-  const getClassNames = async () => {
-    try {
-      const response = await api.get("/class_names");
-      if (response.status === 200) {
-        setClassNames(response.data.class_names);
-      } else {
-        console.error("Failed to fetch class names");
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    getClassNames();
-  }, []);
+  const classNames = [
+    "apple",
+    "banana",
+    "beetroot",
+    "bell pepper",
+    "cabbage",
+    "capsicum",
+    "carrot",
+    "cauliflower",
+    "chilli pepper",
+    "corn",
+    "cucumber",
+    "eggplant",
+    "garlic",
+    "ginger",
+    "grapes",
+    "jalepeno",
+    "kiwi",
+    "lemon",
+    "lettuce",
+    "mango",
+    "onion",
+    "orange",
+    "paprika",
+    "pear",
+    "peas",
+    "pineapple",
+    "pomegranate",
+    "potato",
+    "raddish",
+    "soy beans",
+    "spinach",
+    "sweetcorn",
+    "sweetpotato",
+    "tomato",
+    "turnip",
+    "watermelon",
+  ];
 
   return (
     <Container>
@@ -38,18 +58,16 @@ const About = () => {
                 <li>PNG</li>
                 <li>JPG</li>
                 <li>JPEG</li>
-                <li>GIF</li>
               </ul>
               <Card.Text>
                 The model is trained to recognize the following classes:
               </Card.Text>
               <ul>
-                {classNames &&
-                  classNames.map((item, index) => (
-                    <li key={index}>
-                      {item.charAt(0).toUpperCase() + item.slice(1)}
-                    </li>
-                  ))}
+                {classNames.map((item, index) => (
+                  <li key={index}>
+                    {item.charAt(0).toUpperCase() + item.slice(1)}
+                  </li>
+                ))}
               </ul>
             </Card.Body>
           </Card>

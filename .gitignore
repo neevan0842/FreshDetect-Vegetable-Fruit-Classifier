@@ -1,5 +1,6 @@
 backend/model_creation/fruit-and-vegetable-image-recognition
 backend/model_creation/model.keras
+backend/uploads/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

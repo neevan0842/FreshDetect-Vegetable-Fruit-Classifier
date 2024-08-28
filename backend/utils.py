@@ -43,7 +43,7 @@ class_names = [
     "turnip",
     "watermelon",
 ]
-ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif"}
+ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
 
 
 def get_class_names():
