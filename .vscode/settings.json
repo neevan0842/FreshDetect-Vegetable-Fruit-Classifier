@@ -1,0 +1,4 @@
+{
+  "browser-preview.chromePath": "/usr/bin/brave-browser",
+  "browser-preview.args": ["--incognito"]
+}

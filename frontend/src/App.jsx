@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import NotFoundPage from "./components/NotFound";
 import Home from "./pages/Home";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/NavBar";
 import About from "./pages/About";
 
 const App = () => {
