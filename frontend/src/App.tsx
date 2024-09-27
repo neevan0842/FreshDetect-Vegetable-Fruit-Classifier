@@ -1,14 +1,13 @@
-import React from "react";
 import { Route, Routes } from "react-router-dom";
-import NotFoundPage from "./components/NotFound";
 import Home from "./pages/Home";
-import Navbar from "./components/NavBar";
 import About from "./pages/About";
+import NavBar from "./components/NavBar";
+import NotFound from "./components/NotFound";
 
 const App = () => {
   return (
     <div>
-      <Navbar />
+      <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
@@ -19,7 +18,7 @@ const App = () => {
             </div>
           }
         />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
