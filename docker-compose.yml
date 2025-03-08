@@ -1,0 +1,38 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend_dev
+    ports:
+      - "5173:5173"
+    develop:
+      watch:
+        - action: sync
+          path: ./frontend
+          target: /code
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: ./frontend/package.json
+          target: /code/package.json
+    env_file:
+      - ./frontend/.env.local
+    command: "npm run dev -- --host"
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend
+    container_name: backend_dev
+    ports:
+      - "5000:5000"
+    develop:
+      watch:
+        - action: sync
+          path: ./backend
+          target: /code
+        - action: rebuild
+          path: ./backend/requirements.txt
+          target: /code/requirements.txt
+    command: "flask run --host=0.0.0.0 --port=5000 --debug"
+    restart: unless-stopped
