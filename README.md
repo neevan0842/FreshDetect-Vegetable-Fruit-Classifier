@@ -4,6 +4,12 @@
 
 FreshDetect is a web application that classifies images of fruits and vegetables using machine learning. The app is built with Flask (backend) and React (frontend) and is containerized using Docker.
 
+## Dataset
+
+- **Name:** Fruit and Vegetable Image Recognition
+- **Source:** Kaggle
+- **Link:** [View Dataset](https://www.kaggle.com/datasets/kritikseth/fruit-and-vegetable-image-recognition)
+
 ## Getting Started
 
 ### 1. Clone the Repository
